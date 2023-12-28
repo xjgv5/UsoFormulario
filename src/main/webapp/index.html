@@ -20,6 +20,49 @@
             <div><input type="email" name="email" id="email"></div>
         </div>
         <div class="">
+            <label for="pais">Pais</label>
+            <div class="">
+                <select name="pais" id="pais">
+                    <option value="">-- Seleccionar --</option>
+                    <option value="ES">España</option>
+                    <option value="MX">México</option>
+                    <option value="CL">Chile</option>
+                    <option value="AR">Argentina</option>
+                    <option value="PE">Perú</option>
+                    <option value="CO">Colombia</option>
+                    <option value="VE">Venezuela</option>
+                </select>
+            </div>
+        </div>
+        <div class="">
+            <label for="lenguajes">Lenguajes de programación</label>
+            <div class="">
+                <select name="lenguajes" id="lenguajes" multiple>
+                    <option value="java">Java SE</option>
+                    <option value="jakartaee">Jakarta EE9</option>
+                    <option value="spring">Spring Boot</option>
+                    <option value="js">Javascript</option>
+                    <option value="angular">Angular</option>
+                    <option value="react">React</option>
+                </select>
+            </div>
+        </div>
+        <div class="">
+            <label>Roles</label>
+            <div class="">
+                <input type="checkbox" name="roles" value="ROLE_ADMIN">
+                <label>Administrador</label>
+            </div>
+        </div>
+        <div class="">
+            <input type="checkbox" name="roles" value="ROLE_USER">
+            <label>Usuario</label>
+        </div>
+        <div class="">
+            <input type="checkbox" name="roles" value="ROLE_MODERATOR">
+            <label>Moderador</label>
+        </div>
+        <div class="">
             <div class="">
                 <input type="submit" value="Enviar">
             </div>
