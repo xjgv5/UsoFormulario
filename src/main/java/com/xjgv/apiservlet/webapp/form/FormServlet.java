@@ -8,9 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 
 @WebServlet("/form")
@@ -31,29 +29,29 @@ public class FormServlet extends HttpServlet {
                 req.getParameter("habilitar").equals("on");
         String secreto = req.getParameter("secreto");
 
-        List<String> errores = new ArrayList<>();
+        Map<String, String> errores = new HashMap<>();
 
         if (username == null || username.isBlank()) {
-            errores.add("El nombre de usuario es requerido");
+            errores.put("username","El nombre de usuario es requerido");
         }
 
         if (password == null || password.isBlank()) {
-            errores.add("La contraseña no puede estar vacía");
+            errores.put("password","La contraseña no puede estar vacía");
         }
         if (email == null || !email.contains("@")) {
-            errores.add("El correo es requerido y debe tener un formato de correo");
+            errores.put("email","El correo es requerido y debe tener un formato de correo");
         }
         if (pais == null || pais.isBlank()) {
-            errores.add("El país es requerido");
+            errores.put("pais","El país es requerido");
         }
         if (lenguajes == null || lenguajes.length == 0) {
-            errores.add("Debe seleccionar al menos un lenguaje");
+            errores.put("lenguajes","Debe seleccionar al menos un lenguaje");
         }
         if (roles == null || roles.length == 0) {
-            errores.add("Debe seleccionar al menos un rol");
+            errores.put("roles","Debe seleccionar al menos un rol");
         }
         if (idioma == null) {
-            errores.add("Debe seleccionar un idioma");
+            errores.put("idioma","Debe seleccionar un idioma");
         }
 
         if (errores.isEmpty()) {
