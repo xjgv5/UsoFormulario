@@ -31,7 +31,9 @@
     <form action="/webapp-form/form" method="post">
         <div class="row mb-3">
             <label for="username" class="col-form-control col-sm-2">Usuario</label>
-            <div class="col-sm-4"><input type="text" name="username" id="username" class="form-control"></div>
+            <div class="col-sm-4">
+                <input type="text" name="username" id="username" class="form-control" value="${param.username}">
+            </div>
             <%
                 if (errores != null && errores.containsKey("username")) {
                     out.println("<small class='alert alert-danger' style='color: red;'>" + errores.get("username") + "</small>");
@@ -49,7 +51,9 @@
         </div>
         <div class="row mb-3" class="col-form-control">
             <label for="email" class="col-form-control col-sm-2">Correo</label>
-            <div class="col-sm-4"><input type="email" name="email" id="email" class="form-control"></div>
+            <div class="col-sm-4">
+                <input type="email" name="email" id="email" class="form-control" value="${param.email}">
+            </div>
             <%
                 if (errores != null && errores.containsKey("email")) {
                     out.println("<small class='alert alert-danger' style='color: red;'>" + errores.get("email") + "</small>");
@@ -61,13 +65,13 @@
             <div class="col-sm-4">
                 <select name="pais" id="pais" class="form-select">
                     <option value="">-- Seleccionar --</option>
-                    <option value="ES">España</option>
-                    <option value="MX">México</option>
-                    <option value="CL">Chile</option>
-                    <option value="AR">Argentina</option>
-                    <option value="PE">Perú</option>
-                    <option value="CO">Colombia</option>
-                    <option value="VE">Venezuela</option>
+                    <option value="ES" ${param.pais.equals("ES") ? "selected" : ""}>España</option>
+                    <option value="MX" ${param.pais.equals("MX") ? "selected" : ""}>México</option>
+                    <option value="CL" ${param.pais.equals("CL") ? "selected" : ""}>Chile</option>
+                    <option value="AR" ${param.pais.equals("AR") ? "selected" : ""}>Argentina</option>
+                    <option value="PE" ${param.pais.equals("PE") ? "selected" : ""}>Perú</option>
+                    <option value="CO" ${param.pais.equals("CO") ? "selected" : ""}>Colombia</option>
+                    <option value="VE" ${param.pais.equals("VE") ? "selected" : ""}>Venezuela</option>
                 </select>
             </div>
             <%
@@ -80,12 +84,12 @@
             <label for="lenguajes" class="col-form-control col-sm-2">Lenguajes de programación</label>
             <div class="col-sm-4">
                 <select name="lenguajes" id="lenguajes" multiple class="form-select">
-                    <option value="java">Java SE</option>
-                    <option value="jakartaee">Jakarta EE9</option>
-                    <option value="spring">Spring Boot</option>
-                    <option value="js">Javascript</option>
-                    <option value="angular">Angular</option>
-                    <option value="react">React</option>
+                    <option value="java" ${paramValues.lenguajes.stream().anyMatch(v -> v.equals("java")).get() ? "selected" : ""}>Java SE</option>
+                    <option value="jakartaee" ${paramValues.lenguajes.stream().anyMatch(v -> v.equals("jakartaee")).get() ? "selected" : ""}>Jakarta EE9</option>
+                    <option value="spring" ${paramValues.lenguajes.stream().anyMatch(v -> v.equals("spring")).get() ? "selected" : ""}>Spring Boot</option>
+                    <option value="js" ${paramValues.lenguajes.stream().anyMatch(v -> v.equals("js")).get() ? "selected" : "javascript"}>Javascript</option>
+                    <option value="angular" ${paramValues.lenguajes.stream().anyMatch(v -> v.equals("angular")).get() ? "selected" : ""}>Angular</option>
+                    <option value="react" ${paramValues.lenguajes.stream().anyMatch(v -> v.equals("react")).get() ? "selected" : ""}>React</option>
                 </select>
             </div>
             <%
@@ -97,17 +101,17 @@
         <div class="row mb-3"> <!-- Roles -->
             <label class="col-form-label col-sm-2">Roles</label>
             <div class="form-check col-sm-2">
-                <input type="checkbox" name="roles" value="ROLE_ADMIN" class="form-check-input">
+                <input type="checkbox" name="roles" value="ROLE_ADMIN" class="form-check-input" ${paramValues.lenguajes.stream().anyMatch(v -> v.equals("ROLE_ADMIN")).get() ? "checked" : ""}>
                 <label class="form-check-label">Administrador</label>
             </div>
 
             <div class="form-check col-sm-2">
-                <input type="checkbox" name="roles" value="ROLE_USER" class="form-check-input">
+                <input type="checkbox" name="roles" value="ROLE_USER" class="form-check-input" ${paramValues.lenguajes.stream().anyMatch(v -> v.equals("ROLE_USER")).get() ? "checked" : ""}>
                 <label class="form-check-label">Usuario</label>
             </div>
 
             <div class="form-check col-sm-2">
-                <input type="checkbox" name="roles" value="ROLE_MODERATOR" class="form-check-input">
+                <input type="checkbox" name="roles" value="ROLE_MODERATOR" class="form-check-input" ${paramValues.lenguajes.stream().anyMatch(v -> v.equals("ROLE_MODERATOR")).get() ? "checked" : ""}>
                 <label class="form-check-label">Moderador</label>
             </div>
             <%
@@ -119,15 +123,15 @@
         <div class="row mb-3">
             <label class="col-form-control col-sm-2">Idiomas</label>
             <div class="form-check col-sm-2">
-                <input type="radio" id="esp" name="idioma" value="es" class="form-check-input">
+                <input type="radio" id="esp" name="idioma" value="es" class="form-check-input" ${param.idioma.equals("es") ? "checked" : ""}>
                 <label for="esp">Español</label>
             </div>
             <div class="form-check col-sm-2">
-                <input type="radio" id="ing" name="idioma" value="en" class="form-check-input">
+                <input type="radio" id="ing" name="idioma" value="en" class="form-check-input" ${param.idioma.equals("en") ? "checked" : ""}>
                 <label for="ing">Inglés</label>
             </div>
             <div class="form-check col-sm-2">
-                <input type="radio" id="frn" name="idioma" value="fr" class="form-check-input">
+                <input type="radio" id="frn" name="idioma" value="fr" class="form-check-input" ${param.idioma.equals("fr") ? "checked" : ""}>
                 <label for="frn">Francés</label>
             </div>
             <%
