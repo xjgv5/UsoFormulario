@@ -94,7 +94,7 @@
                 }
             %>
         </div>
-        <div class="row-mb-3"> <!-- Roles -->
+        <div class="row mb-3"> <!-- Roles -->
             <label class="col-form-label col-sm-2">Roles</label>
             <div class="form-check col-sm-2">
                 <input type="checkbox" name="roles" value="ROLE_ADMIN" class="form-check-input">
@@ -105,7 +105,7 @@
                 <input type="checkbox" name="roles" value="ROLE_USER" class="form-check-input">
                 <label class="form-check-label">Usuario</label>
             </div>
-            
+
             <div class="form-check col-sm-2">
                 <input type="checkbox" name="roles" value="ROLE_MODERATOR" class="form-check-input">
                 <label class="form-check-label">Moderador</label>
@@ -119,26 +119,26 @@
         <div class="row mb-3">
             <label class="col-form-control col-sm-2">Idiomas</label>
             <div class="form-check col-sm-2">
-                <input type="radio" name="idioma" value="es">
-                <label>Español</label>
+                <input type="radio" id="esp" name="idioma" value="es" class="form-check-input">
+                <label for="esp">Español</label>
             </div>
             <div class="form-check col-sm-2">
-                <input type="radio" name="idioma" value="en">
-                <label>Inglés</label>
+                <input type="radio" id="ing" name="idioma" value="en" class="form-check-input">
+                <label for="ing">Inglés</label>
             </div>
             <div class="form-check col-sm-2">
-                <input type="radio" name="idioma" value="fr">
-                <label>Francés</label>
+                <input type="radio" id="frn" name="idioma" value="fr" class="form-check-input">
+                <label for="frn">Francés</label>
             </div>
             <%
                 if (errores != null && errores.containsKey("idioma")) {
                     out.println("<small class='alert alert-danger' style='color: red;'>" + errores.get("idioma") + "</small>");
                 }
             %>
-            <div class="form-check">
-                <label for="habilitar" class="col-form-control col-sm-2">Habilitar</label>
+            <div class="row mb-3">
+                <label for="habilitar" class="col-form-label col-sm-2">Habilitar</label>
                 <div class="form-check col-sm-2">
-                    <input type="checkbox" name="habilitar" id="habilitar" checked>
+                    <input type="checkbox" name="habilitar" id="habilitar" checked class="form-input-check">
                 </div>
             </div>
         </div>
